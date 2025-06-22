@@ -30,8 +30,8 @@ builder.Services.AddSwaggerGen(options => {
         Version = "v1",
         Description = "API para calcular estrategias óptimas de defensa contra hordas de zombies.",
         Contact = new OpenApiContact {
-            Name = "Tu Nombre",
-            Email = "tu.correo@example.com"
+            Name = "Juan José Palomino",
+            Email = ""
         }
     });
 
@@ -72,10 +72,10 @@ builder.Services.AddCors(options => {
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment()) {
+//if (app.Environment.IsDevelopment()) {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.UseCors();
 

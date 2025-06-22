@@ -16,6 +16,18 @@ namespace ZombieDefense.Application.Services {
             _zombieRepository = zombieRepository;
         }
 
+        /// <summary>
+        /// Calcula la estrategia óptima de eliminación de zombies con base en los recursos disponibles.
+        /// </summary>
+        /// <param name="availableBullets">Cantidad de balas disponibles para la simulación.</param>
+        /// <param name="availableSeconds">Tiempo disponible en segundos para eliminar zombies.</param>
+        /// <returns>
+        /// Una lista de <see cref="SelectedZombie"/> que representa la mejor estrategia posible,
+        /// maximizando el puntaje obtenido sin exceder balas ni tiempo disponibles.
+        /// </returns>
+        /// <remarks>
+        /// La estrategia selecciona zombies ordenados por eficiencia (puntaje / (balas + tiempo)) y prioriza amenazas mayores.
+        /// </remarks>
         public async Task<List<SelectedZombie>> CalculateOptimalStrategyAsync(int availableBullets, int availableSeconds) {
 
             var zombies = await _zombieRepository.GetAvailableZombiesAsync();
